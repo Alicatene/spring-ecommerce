@@ -86,7 +86,7 @@ public class Producto {
 	}
 	
 	public Usuario getUsuario() {
-		return getUsuario();
+		return usuario;
 	}
 	
 	public void setUsuario(Usuario usuario) {
