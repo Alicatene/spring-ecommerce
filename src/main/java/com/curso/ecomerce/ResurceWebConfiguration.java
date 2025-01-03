@@ -9,6 +9,7 @@ import com.curso.ecomerce.ResurceWebConfiguration.WebMvc;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 @Configuration
 public class ResurceWebConfiguration implements WebMvcConfigurer {
 	
