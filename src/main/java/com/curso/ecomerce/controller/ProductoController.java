@@ -1,6 +1,11 @@
 package com.curso.ecomerce.controller;
 
+import com.curso.ecomerce.model.Producto;
+import com.curso.ecomerce.model.Usuario;
+import com.curso.ecomerce.service.ProductoService;
+import com.curso.ecomerce.service.UploadFileService;
 import org.slf4j.*;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.curso.ecomerce.model.Producto;
-import com.curso.ecomerce.model.Usuario;
-import com.curso.ecomerce.service.ProductoService;
-import com.curso.ecomerce.service.UploadFileService;
+
+
 
 import java.io.IOException;
 import java.util.Optional;
@@ -67,7 +70,7 @@ public class ProductoController {
 		Optional<Producto> optionalProducto=productoService.get(id);
 		producto= optionalProducto.get();
 		
-		LOGGER.info("Producto buscado: {}",producto);
+		LOGGER.info("Producto buscado: {}", producto);
 		model.addAttribute("producto", producto);
 		
 		return "productos/edit";

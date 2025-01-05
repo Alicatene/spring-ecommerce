@@ -1,5 +1,6 @@
 package com.curso.ecomerce.model;
 
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,11 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.List;
 
-@Entity
-@Table(name = "usuarios")
-public class Usuario {
+
+    @Entity
+    @Table(name = "usuarios")
+    public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -29,8 +30,10 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario")
 	private List<Orden> ordenes;
 	
-	public Usuario() {		
+	public Usuario() {	
+		
 	}
+	
 	public Usuario(Integer id, String nombre, String username, String email, String direccion, String telefono,
 			String tipo, String password) {
 		super();
@@ -91,7 +94,14 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+		
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", email=" + email
+				+ ", direccion=" + direccion + ", telefono=" + telefono + ", tipo=" + tipo + ", password=" + password
+				+ "]";
+	}	
+
 	public List<Producto> getProductos() {
 		return productos;
 	}
@@ -105,11 +115,4 @@ public class Usuario {
 	public void setOrdenes(List<Orden> ordenes) {
 		this.ordenes = ordenes;
 	}
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", email=" + email
-				+ ", direccion=" + direccion + ", telefono=" + telefono + ", tipo=" + tipo + ", password=" + password
-				+ "]";
-	}	
-
 }
