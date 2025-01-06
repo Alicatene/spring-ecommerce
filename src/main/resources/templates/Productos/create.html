@@ -10,20 +10,23 @@
 
   <title>Spring eCommerce</title>
 
+
   <!-- Bootstrap core CSS -->
-  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+   <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-   <link th:href="@{/css/heroic-features.css}" rel="stylesheet">   
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <div th:include="administrador/template_admin.html::header"></div>
+   <div th:include="administrador/template_admin.html::header" ></div>
 
 <!-- Page Content -->
 <div class="container">
+
 
   <!-- Page Heading/Breadcrumbs -->
   <h1 class="mt-4 mb-3">
@@ -91,11 +94,10 @@
 <!-- /.container -->
 
 <!-- Footer -->
-<div th:include="administrador/template_admin.html::footer"></div>
+ <div th:include="administrador/template_admin.html::footer" ></div>
 
-<!--Bootstrap core JavaScript-->
+ <!-- Bootstrap core JavaScript -->
     <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-    <!--Custom styles for this template-->
     <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>

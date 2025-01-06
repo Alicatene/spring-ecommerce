@@ -1,73 +1,70 @@
-  <!DOCTYPE html>
-  <html lang="es" xmlns:th="http://www.thymeleaf.org">
-  <head>
-	
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, skring-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-  <title>Spring eCommerce</title>
-  
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
 
-  <!--Bootstrap core CSS-->
-      <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-  	
-      <!--Custom styles for this template-->
-      <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
-  
-  
-  
-  </head>
-  
-  <body>
-	
- <div th:include="administrador/template_admin.html::header"></div>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Page Content -->
-    <div class="container">
+<title>Spring eCommerce</title>
 
-      <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenido a Spring Ecommerce 2021</h1>
-        <p class="lead">Tu tienda de productos en Línea</p>
-      </header>
 
-      <!-- Page Features -->
-      <div class="row text-center">
+<!-- Bootstrap core CSS -->
+<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
 
-        <div class="col-lg-3 col-md-6 mb-4" th:each="producto:${productos}">
-          <div class="card h-100">
-            <img class="card-img-top" th:src="@{/images/{img} (img=${producto.imagen})}" alt="">
-            <div class="card-body">
-              <p class="card-text"" th:text="${producto.nombre}"></p>
-            </div>
-            <div class="card-footer">
-              <a th:href="@{/productohome/{id} (id=${producto.id})}" class="btn btn-success">Ver producto</a>
-            </div>
-          </div>
-        </div>
+<!-- Custom styles for this template -->
+<link th:href="@{css/heroic-features.css}" rel="stylesheet">
 
-       
+</head>
 
-      </div>
-      <!-- /.row -->
+<body>
 
-    </div>
-    <!-- /.container -->
-    
-    <!-- Footer -->
-	<footer>
-	<div th:include="administrador/template_admin.html::footer"></div></footer>
-	
-	
-	<!--Bootstrap core JavaScript-->
-	    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-		
-	    <!--Custom styles for this template-->
-	    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-		
-		</body>
-		</html>
-	
+	<!-- Navigation -->
+	<div th:include="administrador/template_admin.html::header"></div>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Jumbotron Header -->
+		<header class="jumbotron my-4">
+			<h1 class="display-3">Bienvenido a Spring Ecommerce 2021</h1>
+			<p class="lead">Tu tienda de productos en Línea</p>
+		</header>
+
+		<!-- Page Features -->
+		<div class="row text-center">
+
+			<div class="col-lg-3 col-md-6 mb-4" th:each="producto: ${productos}">
+				<div class="card h-100">
+					<img class="card-img-top"
+						th:src="@{/images/{img} (img=${producto.imagen})} " alt="">
+					<div class="card-body">
+						<p class="card-text" th:text="${producto.nombre}"></p>
+					</div>
+					<div class="card-footer">
+						<a href="productohome.html" class="btn btn-success">Ver
+							producto</a>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+	<div th:include="administrador/template_admin.html::footer"></div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
 	

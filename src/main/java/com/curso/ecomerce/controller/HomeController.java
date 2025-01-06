@@ -4,6 +4,8 @@ import com.curso.ecomerce.model.DetalleOrden;
 import com.curso.ecomerce.model.Orden;
 import com.curso.ecomerce.model.Producto;
 import com.curso.ecomerce.model.Usuario;
+import com.curso.ecomerce.service.IDetalleOrdenService;
+import com.curso.ecomerce.service.IOrdenService;
 import com.curso.ecomerce.service.IUsuarioService;
 import com.curso.ecomerce.service.ProductoService;
 import org.slf4j.Logger;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/")
@@ -33,6 +37,12 @@ public class HomeController {
 	
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	@Autowired
+	private IOrdenService ordenService;
+	
+	@Autowired
+	private IDetalleOrdenService detalleOrdenService;
 	
 	//Para almacenar los detalles de la orden
 	List<DetalleOrden> detalles= new ArrayList<DetalleOrden>();
@@ -143,4 +153,39 @@ public class HomeController {
 		
 		return "usuario/resumenorden";
 	}
+	
+	//Guardar la orden
+	@GetMapping("/saveOrder")
+	public String saveOrder() {
+		Date fechaCreacion = new Date();
+		orden.setFechaCreacion(fechaCreacion);
+		orden.setNumero(ordenService.generarNumeroOrden());
+		
+		//Usuario
+		Usuario usuario = usuarioService.findById(1).get();
+		
+		orden.setUsuario(usuario);
+		ordenService.save(orden);
+		
+		//Guardar detalles
+		for (DetalleOrden dt:detalles) {
+			dt.setOrden(orden);
+			detalleOrdenService.save(dt);
+		}
+		
+		//Limpiar lista y orden
+		orden = new Orden();
+		detalles.clear();
+		
+		return "redirect:/";
+	}
+	
+	@PostMapping("/search")
+	public String searchProduct(@RequestParam String nombre, Model model) {
+		log.info("Nombre del producto: {}", nombre);
+		List<Producto> productos = productoService.findAll().stream().filter( p -> p.getNombre().toLowerCase().contains(nombre.toLowerCase())).collect(Collectors.toList());
+		model.addAttribute("productos", productos);		
+		return "usuario/home";
+	}
+	
 }
